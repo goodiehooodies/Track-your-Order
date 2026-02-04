@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Track your Order</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="tech-theme">
+
+  <!-- TECH SECTION -->
+  <div id="tech-section">
+    <h1>Track your Order</h1>
+
+    <input
+      type="tel"
+      id="orderInput"
+      placeholder="Enter Order ID"
+      inputmode="numeric"
+    />
+
+    <p id="errorText" class="error hidden"></p>
+
+    <button id="trackBtn">Track your Order ›</button>
+  </div>
+
+  <!-- VALENTINE SECTION -->
+  <div id="valentine-section" class="hidden">
+    <div class="hearts"></div>
+
+    <video id="valentineVideo" controls>
+      <source src="video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div id="choice-section" class="hidden">
+      <h2>Will you be my Valentine, Miss Thakur? 💖</h2>
+      <div class="buttons">
+        <button id="yesBtn">YES ❤️</button>
+        <button id="noBtn">NO 💔</button>
+      </div>
+    </div>
+
+    <div id="final-message" class="hidden">
+      <p>
+        Miss Thakur, your responses aren’t stored —<br>
+        so how about a call with RD 📞
+      </p>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
