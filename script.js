@@ -1,76 +1,67 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const body = document.body;
 
-  // Tech section
-  const techSection = document.getElementById("tech-section");
-  const trackBtn = document.getElementById("trackBtn");
-  const orderInput = document.getElementById("orderInput");
-  const errorText = document.getElementById("errorText");
+  /* ===============================
+     PAGE 1: TRACK ORDER (index.html)
+     =============================== */
 
-  // Valentine section
-  const valentineSection = document.getElementById("valentine-section");
-  const video = document.getElementById("valentineVideo");
-  const choiceSection = document.getElementById("choice-section");
-  const finalMessage = document.getElementById("final-message");
+  const trackBtn = document.getElementById("track-btn");
 
-  // Buttons
-  const yesBtn = document.getElementById("yesBtn");
-  const noBtn = document.getElementById("noBtn");
+  if (trackBtn) {
+    const orderInput = document.getElementById("order-id");
+    const errorMessage = document.getElementById("error-message");
 
-  const REQUIRED_CODE = "080731";
+    const REQUIRED_CODE = "080731";
 
-  trackBtn.addEventListener("click", () => {
-    const input = orderInput.value.trim();
+    trackBtn.addEventListener("click", () => {
+      const value = orderInput.value.trim();
 
-    if (input === "") {
-      showError("Please enter your Order ID");
-      return;
-    }
+      if (value === "") {
+        errorMessage.textContent = "Please enter Order ID";
+        return;
+      }
 
-    if (!/^\d+$/.test(input)) {
-      showError("Order ID must contain only numbers");
-      return;
-    }
+      if (value !== REQUIRED_CODE) {
+        errorMessage.textContent = "Invalid Order ID";
+        return;
+      }
 
-    if (input !== REQUIRED_CODE) {
-      showError("Invalid Order ID");
-      return;
-    }
-
-    errorText.classList.add("hidden");
-    orderInput.style.borderColor = "#2a3566";
-
-    techSection.classList.add("hidden");
-    valentineSection.classList.remove("hidden");
-
-    body.classList.remove("tech-theme");
-    body.classList.add("valentine-theme");
-
-    video.play().catch(() => {
-      console.log("Autoplay blocked, user interaction required");
+      // ✅ Redirect to Valentine page
+      window.location.href = "valentine.html";
     });
-  });
-
-  video.addEventListener("ended", () => {
-    choiceSection.classList.remove("hidden");
-  });
-
-  yesBtn.addEventListener("click", () => {
-    choiceSection.classList.add("hidden");
-    finalMessage.classList.remove("hidden");
-  });
-
-  noBtn.addEventListener("click", () => {
-    noBtn.style.transition = "opacity 0.4s ease";
-    noBtn.style.opacity = "0";
-    setTimeout(() => {
-      noBtn.style.display = "none";
-    }, 400);
-  });
-
-  function showError(message) {
-    errorText.textContent = message;
-    errorText.classList.remove("hidden");
-    orderInput.style.borderColor = "#ff6b6b";
   }
+
+  /* ===============================
+     PAGE 2: VALENTINE (valentine.html)
+     =============================== */
+
+  const video = document.getElementById("valentine-video");
+
+  if (video) {
+    const videoWrapper = document.getElementById("video-wrapper");
+    const questionSection = document.getElementById("valentine-content");
+    const questionText = document.getElementById("question-text");
+    const yesBtn = document.getElementById("yes-btn");
+    const noBtn = document.getElementById("no-btn");
+
+    video.addEventListener("ended", () => {
+      videoWrapper.style.display = "none";
+      questionSection.classList.remove("hidden");
+    });
+
+    yesBtn.addEventListener("click", () => {
+      questionText.innerHTML = `
+        If you’re comfortable…<br>
+        let’s talk about this.
+      `;
+      document.querySelector(".button-group").style.display = "none";
+    });
+
+    noBtn.addEventListener("click", () => {
+      noBtn.style.opacity = "0";
+      setTimeout(() => {
+        noBtn.style.display = "none";
+      }, 400);
+    });
+  }
+
 });

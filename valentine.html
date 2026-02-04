@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="valentine-page">
+
+  <div class="valentine-container">
+    <div class="floating-hearts"></div>
+
+    <!-- VIDEO SECTION -->
+    <div class="video-wrapper" id="video-wrapper">
+      <video id="valentine-video" controls>
+        <source src="video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- QUESTION SECTION -->
+    <div id="valentine-content" class="valentine-content hidden">
+      <h2 id="question-text">
+        Will you be my Valentine, Miss Thakur? 💖
+      </h2>
+
+      <div class="button-group">
+        <button id="yes-btn" class="btn-yes">YES ❤️</button>
+        <button id="no-btn" class="btn-no">NO 💔</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
